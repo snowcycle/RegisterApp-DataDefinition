@@ -1,6 +1,6 @@
 CREATE TABLE employee (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
-  employeeid charachter varying(5) NOT NULL DEFAULT(0),
+  employeeid character varying(5) NOT NULL DEFAULT(0),
   firstname character varying(128) NOT NULL DEFAULT(''),
   lastname character varying(128) NOT NULL DEFAULT(''),
   password bytea NOT NULL DEFAULT(''),

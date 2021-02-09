@@ -1,6 +1,6 @@
 CREATE TABLE employee (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
-  employeeid character varying(5) NOT NULL DEFAULT(''),
+  employeeid character varying(5) NOT NULL DEFAULT(''), -- We think this has been limited to 5 numerical characters by switching to a character instead of an int
   firstname character varying(128) NOT NULL DEFAULT(''),
   lastname character varying(128) NOT NULL DEFAULT(''),
   password bytea NOT NULL DEFAULT(''),

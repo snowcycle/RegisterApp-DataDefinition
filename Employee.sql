@@ -1,6 +1,6 @@
 CREATE TABLE employee (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
-  employeeid int NOT NULL DEFAULT(0),
+  employeeid character varying(5) NOT NULL DEFAULT(''), -- We think this has been limited to 5 numerical characters by switching to a character instead of an int
   firstname character varying(128) NOT NULL DEFAULT(''),
   lastname character varying(128) NOT NULL DEFAULT(''),
   password bytea NOT NULL DEFAULT(''),
@@ -29,7 +29,7 @@ CREATE TABLE activeuser (
   employeeid uuid NOT NULL,
   name character varying(256) NOT NULL DEFAULT(''),
   classification int NOT NULL DEFAULT(0),
-  sessionkey character varying (128) NOT NULL DEFAULT(''),
+  sessionkey character varying(128) NOT NULL DEFAULT(''), -- Removed a space after varying to fix an error
   createdon timestamp without time zone NOT NULL DEFAULT now(),
   CONSTRAINT activeuser_pkey PRIMARY KEY (id)
 ) WITH (
@@ -44,3 +44,4 @@ CREATE INDEX ix_activeuser_sessionkey
   ON activeuser
   USING btree(sessionkey);
 
+-- commit to the same branch

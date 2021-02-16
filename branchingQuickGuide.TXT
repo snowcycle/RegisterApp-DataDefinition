@@ -1,0 +1,10 @@
+List available branches (Local and remote):  $ git branch -a
+Switch active branch:  $ git checkout <branchName>
+Create new branch and switch to it: $ git checkout -b <branchName>
+Pull specific branch contents to local machine:  $ git pull -u origin <branchName>
+push to specific branch:  $ git push -u origin <branchName>
+delete a branch (locally and remotely):  $ git branch -d <branchName>	$  git push origin :<branchName>
+
+/*	* Without specifying branch for push or pull working branch will be used.
+	* To delete contents of a branch you can simply delete files from your local copy,
+	add the file to list of commits, then push the branch to remote.

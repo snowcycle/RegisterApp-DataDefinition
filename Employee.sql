@@ -3,7 +3,8 @@ CREATE TABLE employee (
   employeeid character varying(5) NOT NULL DEFAULT(''), -- We think this has been limited to 5 numerical characters by switching to a character instead of an int
   firstname character varying(128) NOT NULL DEFAULT(''),
   lastname character varying(128) NOT NULL DEFAULT(''),
-  password bytea NOT NULL DEFAULT(''),
+  --password bytea NOT NULL DEFAULT(''),  -- original line of code
+  password character varying(256) NOT NULL DEFAULT('a'), -- This reflects table on heroku 2/16/21 3:31pm
   active boolean NOT NULL DEFAULT(FALSE), 
   classification int NOT NULL DEFAULT(0),
   managerid uuid NOT NULL DEFAULT CAST('00000000-0000-0000-0000-000000000000' AS uuid),
@@ -22,6 +23,24 @@ ALTER TABLE employee ALTER employeeid SET DEFAULT nextval('employee_employeeid_s
 CREATE INDEX ix_employee_employeeid
   ON employee
   USING btree(employeeid);
+
+-- Adding Three Records to employee table
+INSERT INTO employee (id, employeeid, firstname, lastname, classification, managerid, password) VALUES (
+      gen_random_uuid()
+    , 'A0001'  -- employeeid (5 characters)
+    , 'Manny' -- first name
+    , 'Hustler' -- last name
+    , 1 -- classification 1 is cashier
+    , gen_random_uuid() -- managerid uuid
+    , CAST(0001 AS bytea) -- password in bytea (binary)
+);
+INSERT INTO employee (id, employeeid, firstname, lastname, classification) VALUES (
+      gen_random_uuid()
+    , 'M0001'  -- employeeid (5 characters)
+    , 'Antoni' -- first name
+    , 'Jones' -- last name
+    , 2 -- classification 2 is manager
+);
 
 -----
 CREATE TABLE activeuser (

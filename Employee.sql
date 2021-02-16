@@ -27,21 +27,29 @@ CREATE INDEX ix_employee_employeeid
 -- Adding Three Records to employee table
 INSERT INTO employee (id, employeeid, firstname, lastname, classification, managerid, password) VALUES (
       gen_random_uuid()
-    , 'A0001'  -- employeeid (5 characters)
-    , 'Manny' -- first name
-    , 'Hustler' -- last name
-    , 1 -- classification 1 is cashier
-    , gen_random_uuid() -- managerid uuid
-    , CAST(0001 AS bytea) -- password in bytea (binary)
-);
-INSERT INTO employee (id, employeeid, firstname, lastname, classification) VALUES (
-      gen_random_uuid()
     , 'M0001'  -- employeeid (5 characters)
     , 'Antoni' -- first name
     , 'Jones' -- last name
     , 2 -- classification 2 is manager
+    , gen_random_uuid() -- managerid uuid
+    , 'a' -- password as character
 );
-
+INSERT INTO employee (id, employeeid, firstname, lastname, classification) VALUES (
+      gen_random_uuid()
+    , 'M0001'  -- employeeid (5 characters)
+    , 'Manny' -- first name
+    , 'Hustler' -- last name
+    , 1 -- classification 1 is cashier
+);
+INSERT INTO employee (id, employeeid, firstname, lastname, classification, managerid, password) VALUES (
+      gen_random_uuid()
+    , 'S0001'  -- employeeid (5 characters)
+    , 'Russell' -- first name
+    , 'Tover' -- last name
+    , 3 -- classification 1 is shift-manager
+    , gen_random_uuid() -- managerid uuid
+    , 'b' -- password as character
+);
 -----
 CREATE TABLE activeuser (
   id uuid NOT NULL DEFAULT gen_random_uuid(),

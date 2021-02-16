@@ -29,7 +29,7 @@ CREATE TABLE activeuser (
   employeeid uuid NOT NULL,
   name character varying(256) NOT NULL DEFAULT(''),
   classification int NOT NULL DEFAULT(0),
-  sessionkey character varying (128) NOT NULL DEFAULT(''),
+  sessionkey character varying(128) NOT NULL DEFAULT(''), -- Removed a space after varying to fix an error
   createdon timestamp without time zone NOT NULL DEFAULT now(),
   CONSTRAINT activeuser_pkey PRIMARY KEY (id)
 ) WITH (
@@ -44,3 +44,4 @@ CREATE INDEX ix_activeuser_sessionkey
   ON activeuser
   USING btree(sessionkey);
 
+-- commit to the same branch
